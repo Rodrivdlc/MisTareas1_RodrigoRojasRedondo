@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MisTareas1_RodrigoRojasRedondo</string>
+    <string name="title">Mis Recordatorios</string>
+    <string name="pending">Pendientes</string>
+    <string name="done">Realizadas</string>
+    <string name="add">+</string>
+    <string name="delete">Eliminar</string>
+    <string name="mark_done">Hecha</string>
+    <string name="mark_pending">Pendiente</string>
+</resources>

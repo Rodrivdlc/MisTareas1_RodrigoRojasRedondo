@@ -1,4 +1,3 @@
-
 package com.example.mistareas1_rodrigorojasredondo
 
 import android.content.Context
@@ -18,6 +17,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.mistareas1_rodrigorojasredondo.ui.theme.MisTareas1_RodrigoRojasRedondoTheme
 import com.example.mistareas1_rodrigorojasredondo.ui.theme.LightBlue
+import androidx.compose.ui.res.stringResource
+import java.util.Locale
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +36,12 @@ fun TaskApp(context: Context) {
     var showPendingTasks by remember { mutableStateOf(true) }
     val tasks = remember { mutableStateListOf<Task>() }
     var newTaskDescription by remember { mutableStateOf(TextFieldValue("")) }
+    var isEnglish by remember { mutableStateOf(true) }
+
+    val locale = if (isEnglish) Locale.ENGLISH else Locale("es")
+    val configuration = context.resources.configuration
+    configuration.setLocale(locale)
+    val localizedContext = context.createConfigurationContext(configuration)
 
     // Load tasks from the database
     LaunchedEffect(showPendingTasks) {
@@ -56,7 +63,20 @@ fun TaskApp(context: Context) {
                 .padding(16.dp),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = "Mis Recordatorios", color = Color.White)
+            Text(text = localizedContext.resources.getString(R.string.title), color = Color.White)
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Language selection switch
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = if (isEnglish) "English" else "Español")
+            Switch(
+                checked = isEnglish,
+                onCheckedChange = { isEnglish = it }
+            )
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -77,14 +97,14 @@ fun TaskApp(context: Context) {
                 tasks.clear()
                 tasks.addAll(getTasks(context, status)) // Reload tasks
             }) {
-                Text("+")
+                Text(localizedContext.resources.getString(R.string.add))
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
 
         LazyColumn(modifier = Modifier.weight(1f)) {
             items(tasks) { task ->
-                TaskItem(task, context, tasks)
+                TaskItem(task, context, tasks, isEnglish, localizedContext)
             }
         }
 
@@ -95,18 +115,18 @@ fun TaskApp(context: Context) {
             horizontalArrangement = Arrangement.Center
         ) {
             Button(onClick = { showPendingTasks = true }) {
-                Text("Pendientes")
+                Text(localizedContext.resources.getString(R.string.pending))
             }
             Spacer(modifier = Modifier.width(16.dp))
             Button(onClick = { showPendingTasks = false }) {
-                Text("Realizadas")
+                Text(localizedContext.resources.getString(R.string.done))
             }
         }
     }
 }
 
 @Composable
-fun TaskItem(task: Task, context: Context, tasks: MutableList<Task>) {
+fun TaskItem(task: Task, context: Context, tasks: MutableList<Task>, isEnglish: Boolean, localizedContext: Context) {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
         Text(text = task.description)
         Row {
@@ -114,13 +134,13 @@ fun TaskItem(task: Task, context: Context, tasks: MutableList<Task>) {
                 updateTaskStatus(context, task.id, if (task.isPending) "done" else "pending")
                 tasks.remove(task)
             }) {
-                Text(if (task.isPending) "Hecha" else "Pendiente")
+                Text(if (task.isPending) localizedContext.resources.getString(R.string.mark_done) else localizedContext.resources.getString(R.string.mark_pending))
             }
             Button(onClick = {
                 deleteTask(context, task.id)
                 tasks.remove(task)
             }) {
-                Text("Eliminar")
+                Text(localizedContext.resources.getString(R.string.delete))
             }
         }
     }
