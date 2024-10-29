@@ -4,16 +4,19 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.mistareas1_rodrigorojasredondo.ui.theme.MisTareas1_RodrigoRojasRedondoTheme
-import androidx.compose.ui.text.input.TextFieldValue
+import com.example.mistareas1_rodrigorojasredondo.ui.theme.LightBlue
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,14 +42,31 @@ fun TaskApp(context: Context) {
         tasks.addAll(getTasks(context, status))
     }
 
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(LightBlue)
+                .padding(16.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = "Mis Recordatorios", color = Color.White)
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         // Input field and button to add new tasks
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             TextField(
                 value = newTaskDescription,
                 onValueChange = { newTaskDescription = it },
                 modifier = Modifier
-                    .width(200.dp)
+                    .width(300.dp)
                     .padding(end = 8.dp)
             )
             Button(onClick = {
@@ -69,10 +89,14 @@ fun TaskApp(context: Context) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
             Button(onClick = { showPendingTasks = true }) {
                 Text("Pendientes")
             }
+            Spacer(modifier = Modifier.width(16.dp))
             Button(onClick = { showPendingTasks = false }) {
                 Text("Realizadas")
             }
