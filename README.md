@@ -1,4 +1,7 @@
 # MisTareas1_RodrigoRojasRedondo
+## Esta es la primera aplicación de tres que incluye el ejercicio Prueba de Programación Android 1:
+Tareas1:
+https://github.com/Rodrivdlc/MisTareas1_RodrigoRojasRedondo.git
 
 ## Descripción
 
@@ -53,6 +56,3 @@ La aplicación soporta el cambio dinámico de idioma entre inglés y español. E
 4. Usa los botones junto a cada tarea para marcarla como realizada o eliminarla.
 5. Usa los botones en la parte inferior para filtrar las tareas por su estado (pendiente o realizada).
 
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT.
