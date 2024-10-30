@@ -6,8 +6,10 @@ https://github.com/Rodrivdlc/MisTareas1_RodrigoRojasRedondo.git
 
 
 otros ejercicio: 
-ListaCompra:
-https://github.com/Rodrivdlc/ListaCompra_RodrigoRojasRedondo.git
+
+ListaCompra: https://github.com/Rodrivdlc/ListaCompra_RodrigoRojasRedondo.git
+
+MisTareas2: https://github.com/Rodrivdlc/MisTareas2_RodrigoRojasRedondo.git
 
 ## Descripción
 
