@@ -3,6 +3,11 @@
 MisTareas1:
 https://github.com/Rodrivdlc/MisTareas1_RodrigoRojasRedondo.git
 
+
+otros ejercicio: 
+ListaCompra:
+https://github.com/Rodrivdlc/ListaCompra_RodrigoRojasRedondo.git
+
 ## Descripción
 
 MisTareas1_RodrigoRojasRedondo es una aplicación de Android diseñada para ayudar a los usuarios a gestionar sus tareas. La aplicación permite a los usuarios agregar, eliminar y actualizar el estado de sus tareas. Soporta tanto el idioma inglés como el español, los cuales se pueden alternar usando un interruptor en la interfaz de usuario.
