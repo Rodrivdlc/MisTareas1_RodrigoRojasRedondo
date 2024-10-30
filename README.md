@@ -1,7 +1,8 @@
 # MisTareas1_RodrigoRojasRedondo
-## Esta es la primera aplicación de tres que incluye el ejercicio Prueba de Programación Android 1:
 MisTareas1:
 https://github.com/Rodrivdlc/MisTareas1_RodrigoRojasRedondo.git
+## Esta es la primera aplicación de tres que incluye el ejercicio Prueba de Programación Android 1:
+
 
 
 otros ejercicio: 
